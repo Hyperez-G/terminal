@@ -3,175 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergency Alert - Nuclear Strike</title>
+    <title>Terminal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <style>
-        .alert-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .alert-header {
-            font-size: 32px;
-            color: #ff0000;
-            text-shadow: 0 0 20px #ff0000;
-            margin-bottom: 20px;
-            animation: critical-blink 0.5s infinite;
-            border: 3px solid #ff0000;
-            padding: 20px;
-            background: rgba(255, 0, 0, 0.2);
-            width: 100%;
-            max-width: 800px;
-        }
-        
-        .tv-frame {
-            border: 8px solid #333333;
-            border-radius: 15px;
-            background: #000000;
-            padding: 30px;
-            max-width: 700px;
-            width: 100%;
-            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
-        }
-        
-        .breaking-news {
-            font-size: 18px;
-            color: #ffff00;
-            text-shadow: 0 0 10px #ffff00;
-            margin-bottom: 20px;
-            background: #ff0000;
-            color: #ffffff;
-            padding: 8px;
-            font-weight: bold;
-        }
-        
-        .alert-details {
-            font-size: 16px;
-            color: #ffffff;
-            text-shadow: 0 0 8px #ffffff;
-            margin-bottom: 25px;
-            line-height: 1.8;
-            text-align: left;
-        }
-        
-        .target-info {
-            font-size: 18px;
-            color: #ff4444;
-            text-shadow: 0 0 12px #ff4444;
-            margin: 20px 0;
-            padding: 15px;
-            border: 2px solid #ff4444;
-            background: rgba(255, 68, 68, 0.1);
-        }
-        
-        .countdown {
-            font-size: 24px;
-            color: #ffff00;
-            text-shadow: 0 0 15px #ffff00;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        
-        .warning-text {
-            font-size: 14px;
-            color: #ff8800;
-            text-shadow: 0 0 8px #ff8800;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-        
-        @keyframes critical-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-        
-        .tv-static {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(255,255,255,0.02) 1px,
-                    rgba(255,255,255,0.02) 2px
-                );
-            pointer-events: none;
-            opacity: 0.5;
-        }
-        
-        .emergency-banner {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #ff0000;
-            color: #ffffff;
-            padding: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            animation: scroll-text 15s linear infinite;
-        }
-        
-        @keyframes scroll-text {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-    </style>
 </head>
 <body>
     <div class="terminal-container">
-        <!-- Scanlines overlay for CRT effect -->
         <div class="scanlines"></div>
-        <div class="tv-static"></div>
         
-        <div class="alert-container">
-            <div class="tv-frame">
-                <div class="breaking-news">
-                    *** SATELLITE - EMERGENCY ALERT ***
-                </div>
-                
-                <div class="alert-header">
-                    TACTICAL NUCLEAR STRIKE AUTHORIZED
-                </div>
-                
-                <div class="alert-details">
-                    South-East Asia Federation State has launched<br>
-                    a tactical nuclear missile targeting Syndicate<br>
-                    science facility. Impact time unknown.
-                </div>
-                
-                <div class="target-info">
-                    TARGET: SYNDICATE SCIENCE FACILITY<br>
-                    LAUNCHED BY: SOUTH-EAST ASIA FEDERATION STATE<br>
-                    WEAPON TYPE: TACTICAL NUCLEAR WARHEAD
-                </div>
-                
-                <div class="countdown">
-                    TIME TO IMPACT: UNKNOWN
-                </div>
-                
-                <div class="warning-text">
-                    THIS IS NOT A DRILL<br>
-                    SEEK IMMEDIATE SHELTER
-                </div>
-            </div>
+        <!-- Terminal header -->
+        <div class="terminal-header">
+            <div class="terminal-title">SECURED GLOBAL COMMUNICATION - SYSTEM ONLINE</div>
+            <div class="terminal-date" id="terminal-date">AUG 06 2025 - 14:32:00</div>
         </div>
         
-        <div class="emergency-banner">
-            EMERGENCY ALERT SYSTEM - NUCLEAR STRIKE IN PROGRESS - EVACUATE IMMEDIATELY - THIS IS NOT A DRILL - EMERGENCY ALERT SYSTEM
+        <!-- Chat messages container -->
+        <div class="chat-container" id="chat-container">
+            <!-- Boot sequence -->
+            <div class="system-msg">TERMINAL INITIALIZED...</div>
+            <div class="system-msg">CONNECTING TO COMMUNICATION SERVER...</div>
+            <div class="system-msg">LINKING VIA SATELLITE: **ORBITAL RELAY STL-42 'PANZER INDUSTRIES'**</div>
+            <div class="system-msg">ESTABLISHING PRIVATE CHANNEL TO: DOMINATION OF SYNDICATE'S SERVER...</div>
+            <div class="system-msg">CONNECTION ESTABLISHED</div>
+
+            <div class="system-msg">-----------------------------------</div>
+            
+            <!-- Chat messages -->
+            <div class="message system-msg-inline">
+                <span class="timestamp">[22:31:12]</span>
+                <span class="text">*** USER LANGLEY HAS JOINED THE SERVER ***</span>
+            </div>
+
         </div>
     </div>
+    
+    <script src="script.js"></script>
 </body>
 </html>
