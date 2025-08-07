@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal - Connection Lost</title>
+    <title>Terminal - Server Redirect</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
-        .connection-lost-container {
+        .redirect-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -19,68 +19,80 @@
             padding: 20px;
         }
         
-        .connection-lost-message {
+        .redirect-header {
             font-size: 24px;
-            color: #ff4444;
-            text-shadow: 0 0 15px #ff4444;
-            margin-bottom: 20px;
-            animation: error-blink 1.5s infinite;
-        }
-        
-        .connection-details {
-            font-size: 16px;
             color: #ffff00;
-            text-shadow: 0 0 10px #ffff00;
+            text-shadow: 0 0 15px #ffff00;
             margin-bottom: 30px;
-            line-height: 1.6;
+            border: 1px solid #ffff00;
+            padding: 15px;
+            background: rgba(255, 255, 0, 0.05);
         }
         
-        .signal-bars {
-            display: flex;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 20px;
+        .redirect-details {
+            font-size: 16px;
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            max-width: 600px;
         }
         
-        .signal-bar {
-            width: 8px;
-            height: 30px;
-            background: #444444;
-            border: 1px solid #666666;
+        .codename {
+            font-size: 18px;
+            color: #ff8800;
+            text-shadow: 0 0 10px #ff8800;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ff8800;
+            background: rgba(255, 136, 0, 0.05);
         }
         
-        .signal-bar.active {
-            background: #ff4444;
-            box-shadow: 0 0 10px #ff4444;
+        .server-info {
+            font-size: 14px;
+            color: #00ddff;
+            text-shadow: 0 0 8px #00ddff;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid #00ddff;
+            background: rgba(0, 221, 255, 0.05);
         }
         
-        .reconnect-status {
+        .dots {
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        
+        .dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        .status-text {
             font-size: 14px;
             color: #888888;
             text-shadow: 0 0 5px #888888;
+            margin-top: 15px;
         }
         
-        @keyframes error-blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
+
+        
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
         }
         
-        .static-noise {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 1px,
-                    rgba(255,255,255,0.01) 1px,
-                    rgba(255,255,255,0.01) 2px
-                );
-            pointer-events: none;
-            opacity: 0.3;
+        .redirect-info {
+            color: #888888;
+            font-size: 12px;
+            text-shadow: 0 0 5px #888888;
+            margin-top: 20px;
+            font-style: italic;
         }
     </style>
 </head>
@@ -88,29 +100,36 @@
     <div class="terminal-container">
         <!-- Scanlines overlay for CRT effect -->
         <div class="scanlines"></div>
-        <div class="static-noise"></div>
         
-        <div class="connection-lost-container">
-            <div class="connection-lost-message">
-                *** SATELLITE CONNECTION LOST ***
+        <div class="redirect-container">
+            <div class="redirect-header">
+                *** COURSE REDIRECT ***
             </div>
             
-            <div class="connection-details">
-                SIGNAL STRENGTH: NONE<br>
-                LAST CONTACT: 21:49:22<br>
-                ERROR CODE: SAT_LINK_TIMEOUT
+            <div class="redirect-details">
+                CHANGING COURSE TO NEW DESTINATION<br>
+                REDIRECTING TO FEDERAL SOVEREIGN RADIANT OF ROKSANA<br>
+                CONNECTION PARAMETERS UPDATED
             </div>
             
-            <div class="signal-bars">
-                <div class="signal-bar"></div>
-                <div class="signal-bar"></div>
-                <div class="signal-bar"></div>
-                <div class="signal-bar"></div>
-                <div class="signal-bar"></div>
+            <div class="codename">
+                TARGET: "DANCING QUEEN"
             </div>
             
-            <div class="reconnect-status">
-                ATTEMPTING TO RECONNECT...
+            <div class="server-info">
+                DESTINATION: ROKSANA'S SERVER<br>
+                LOCATION: FEDERAL SOVEREIGN RADIANT OF ROKSANA<br>
+                ACCESS TYPE: MONITORING<br>
+                CONNECTION MODE: SURVEILLANCE
+            </div>
+            
+            <div class="status-text">
+                ESTABLISHING CONNECTION<span class="dots"></span>
+            </div>
+            
+            <div class="redirect-info">
+                MONITORING TARGET: DANCING QUEEN<br>
+                ROUTE CHANGE COMPLETED
             </div>
         </div>
     </div>
