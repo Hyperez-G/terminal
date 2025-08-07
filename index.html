@@ -3,107 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal</title>
+    <title>Terminal - Connection Lost</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        .connection-lost-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .connection-lost-message {
+            font-size: 24px;
+            color: #ff4444;
+            text-shadow: 0 0 15px #ff4444;
+            margin-bottom: 20px;
+            animation: error-blink 1.5s infinite;
+        }
+        
+        .connection-details {
+            font-size: 16px;
+            color: #ffff00;
+            text-shadow: 0 0 10px #ffff00;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .signal-bars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .signal-bar {
+            width: 8px;
+            height: 30px;
+            background: #444444;
+            border: 1px solid #666666;
+        }
+        
+        .signal-bar.active {
+            background: #ff4444;
+            box-shadow: 0 0 10px #ff4444;
+        }
+        
+        .reconnect-status {
+            font-size: 14px;
+            color: #888888;
+            text-shadow: 0 0 5px #888888;
+        }
+        
+        @keyframes error-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .static-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255,255,255,0.01) 1px,
+                    rgba(255,255,255,0.01) 2px
+                );
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    </style>
 </head>
 <body>
     <div class="terminal-container">
+        <!-- Scanlines overlay for CRT effect -->
         <div class="scanlines"></div>
+        <div class="static-noise"></div>
         
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-title">SECURED GLOBAL COMMUNICATION - SYSTEM ONLINE</div>
-            <div class="terminal-date" id="terminal-date">AUG 06 2025 - 14:32:00</div>
-        </div>
-        
-        <!-- Chat messages container -->
-        <div class="chat-container" id="chat-container">
-            <!-- Boot sequence -->
-            <div class="system-msg">TERMINAL INITIALIZED...</div>
-            <div class="system-msg">CONNECTING TO COMMUNICATION SERVER...</div>
-            <div class="system-msg">LINKING VIA SATELLITE: **ORBITAL RELAY STL-42 'PANZER INDUSTRIES'**</div>
-            <div class="system-msg">ESTABLISHING PRIVATE CHANNEL TO: DOMINATION OF SYNDICATE'S SERVER...</div>
-            <div class="system-msg">CONNECTION ESTABLISHED</div>
-
-            <div class="system-msg">-----------------------------------</div>
+        <div class="connection-lost-container">
+            <div class="connection-lost-message">
+                *** SATELLITE CONNECTION LOST ***
+            </div>
             
-            <!-- Chat messages -->
-            <div class="message system-msg-inline">
-                <span class="timestamp">[19:43:12]</span>
-                <span class="text">*** USER YUMI CLEARED THE CONVERSATION ***</span>
+            <div class="connection-details">
+                SIGNAL STRENGTH: NONE<br>
+                LAST CONTACT: 21:49:22<br>
+                ERROR CODE: SAT_LINK_TIMEOUT
             </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[19:45:32]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Explain.</span>
+            
+            <div class="signal-bars">
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
             </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[20:06:42]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Take my word for it. However, the moment you are alone with your, well, lets just say your bosses... you can guess the rest can't you?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[20:17:31]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Your data address is from United States of Arcadia. Why risk it?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[20:43:52]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Call it a helping hand if you will, after all, this will either be the last time we speak again or just another day at the office</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[20:49:21]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">I don't need help. I just need to know what you're doing. CIA?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:01:32]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Perhaps we can trade some of our government's secrets?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:06:03]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Why betray your nation?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:11:03]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Because as you said, i'm risking it, so why not betray yours as well?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:28:12]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Deal. Question who helped the United States of Arcadia build Captain Arcadia?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:39:05]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Panzer Industries, Arcadia’s scientists, and Arcadia’s British friends. First of all, why are you here at the first place?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[21:42:37]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Good to know. Here's my government secret.</span>
+            
+            <div class="reconnect-status">
+                ATTEMPTING TO RECONNECT...
             </div>
         </div>
     </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
