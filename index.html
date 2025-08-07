@@ -3,118 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal</title>
+    <title>Terminal - Server Redirect</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        .redirect-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .redirect-header {
+            font-size: 24px;
+            color: #ffff00;
+            text-shadow: 0 0 15px #ffff00;
+            margin-bottom: 30px;
+            border: 1px solid #ffff00;
+            padding: 15px;
+            background: rgba(255, 255, 0, 0.05);
+        }
+        
+        .redirect-details {
+            font-size: 16px;
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            max-width: 600px;
+        }
+        
+        .codename {
+            font-size: 18px;
+            color: #ff8800;
+            text-shadow: 0 0 10px #ff8800;
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #ff8800;
+            background: rgba(255, 136, 0, 0.05);
+        }
+        
+        .server-info {
+            font-size: 14px;
+            color: #00ddff;
+            text-shadow: 0 0 8px #00ddff;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid #00ddff;
+            background: rgba(0, 221, 255, 0.05);
+        }
+        
+        .dots {
+            color: #00ff41;
+            text-shadow: 0 0 8px #00ff41;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        
+        .dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        .status-text {
+            font-size: 14px;
+            color: #888888;
+            text-shadow: 0 0 5px #888888;
+            margin-top: 15px;
+        }
+        
+
+        
+        @keyframes dots {
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
+            100% { content: ''; }
+        }
+        
+        .redirect-info {
+            color: #888888;
+            font-size: 12px;
+            text-shadow: 0 0 5px #888888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <div class="terminal-container">
+        <!-- Scanlines overlay for CRT effect -->
         <div class="scanlines"></div>
         
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-title">SECURED GLOBAL COMMUNICATION - SYSTEM ONLINE</div>
-            <div class="terminal-date" id="terminal-date">AUG 06 2025 - 14:32:00</div>
-        </div>
-        
-        <!-- Chat messages container -->
-        <div class="chat-container" id="chat-container">
-            <!-- Boot sequence -->
-            <div class="system-msg">TERMINAL INITIALIZED...</div>
-            <div class="system-msg">CONNECTING TO COMMUNICATION SERVER...</div>
-            <div class="system-msg">LINKING VIA SATELLITE: **ORBITAL RELAY STL-42 'PANZER INDUSTRIES'**</div>
-            <div class="system-msg">ESTABLISHING PRIVATE CHANNEL TO: DOMINATION OF SYNDICATE'S SERVER...</div>
-            <div class="system-msg">CONNECTION ESTABLISHED</div>
-
-            <div class="system-msg">-----------------------------------</div>
-            
-            <!-- Chat messages -->
-            <div class="message system-msg-inline">
-                <span class="timestamp">[22:31:12]</span>
-                <span class="text">*** USER LANGLEY HAS JOINED THE SERVER ***</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:32:52]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">You're late.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:42:02]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Lost connection, if you want to live, get somewhere safe. There is currently a nuke incoming to you.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:45:02]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Are you serious? I don't see any warnings.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:49:23]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Trust me. I just want you to live.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:52:42]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Would be a bad investment if I let you die immediately.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:54:32]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">How much time i got?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[22:58:15]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">24 minutes til impact.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[23:02:02]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Keep yourself hidden. Contact me if you are secured.</span>
+        <div class="redirect-container">
+            <div class="redirect-header">
+                *** COURSE REDIRECT ***
             </div>
             
-            <div class="message user-msg">
-                <span class="timestamp">[23:06:11]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">I didn’t expect this to be my final moment again. I still wanted to meet someone and continue a relationship. because I can’t do it in my real life. I guess this is my final chance my last life.</span>
+            <div class="redirect-details">
+                CHANGING COURSE TO NEW DESTINATION<br>
+                REDIRECTING TO FEDERAL SOVEREIGN RADIANT OF ROKSANA<br>
+                CONNECTION PARAMETERS UPDATED
             </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[23:12:02]</span>
-                <span class="username">LANGLEY></span>
-                <span class="text">Then save yourself. I need you alive right now. If you truly wanted to meet that someone, save yourself right now. You can't do it if you can't survive</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[23:16:12]</span>
-                <span class="username-red">YUMI></span>
-                <span class="text">Thank you for your concern Langley.</span>
-            </div>
-
             
-            <div class="message system-msg-inline">
-                <span class="timestamp">[23:20:00]</span>
-                <span class="text">*** USER YUMI HAS DISCONNECTED THE SERVER ***</span>
+            <div class="codename">
+                TARGET: "PUBLIC CHANNEL"<br>
             </div>
-
-            <div class="message system-msg-inline">
-                <span class="timestamp">[23:20:00]</span>
-                <span class="text" style="color:#ff6666">*** USER YUMI HAS TERMINATED ***</span>
+            
+            <div class="server-info">
+                DESTINATION: ROKSANA'S SERVER<br>
+                LOCATION: FEDERAL SOVEREIGN RADIANT OF ROKSANA<br>
+                ACCESS TYPE: MONITORING<br>
+                CONNECTION MODE: SURVEILLANCE
+            </div>
+            
+            <div class="status-text">
+                ESTABLISHING CONNECTION<span class="dots"></span>
+            </div>
+            
+            <div class="redirect-info">
+                MONITORING TARGET: PUBLIC CHANNEL<br>
+                ROUTE CHANGE COMPLETED
             </div>
         </div>
     </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
