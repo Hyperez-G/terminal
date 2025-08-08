@@ -184,6 +184,12 @@ body {
     text-shadow: 0 0 8px #ff6666;
 }
 
+.username-pink {
+    color: #ff94cf;
+    font-weight: bold;
+    margin-right: 8px;
+    text-shadow: 0 0 8px #ff94cf;
+}
 .text {
     color: #00ff41;
 }
