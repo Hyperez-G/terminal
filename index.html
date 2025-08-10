@@ -3,108 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal</title>
+    <title>Terminal - Connection Lost</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        .connection-lost-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .connection-lost-message {
+            font-size: 24px;
+            color: #ff4444;
+            text-shadow: 0 0 15px #ff4444;
+            margin-bottom: 20px;
+            animation: error-blink 1.5s infinite;
+        }
+        
+        .connection-details {
+            font-size: 16px;
+            color: #ffff00;
+            text-shadow: 0 0 10px #ffff00;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .signal-bars {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        
+        .signal-bar {
+            width: 8px;
+            height: 30px;
+            background: #444444;
+            border: 1px solid #666666;
+        }
+        
+        .signal-bar.active {
+            background: #ff4444;
+            box-shadow: 0 0 10px #ff4444;
+        }
+        
+        .reconnect-status {
+            font-size: 14px;
+            color: #888888;
+            text-shadow: 0 0 5px #888888;
+        }
+        
+        @keyframes error-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        .static-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 1px,
+                    rgba(255,255,255,0.01) 1px,
+                    rgba(255,255,255,0.01) 2px
+                );
+            pointer-events: none;
+            opacity: 0.3;
+        }
+    </style>
 </head>
 <body>
     <div class="terminal-container">
+        <!-- Scanlines overlay for CRT effect -->
         <div class="scanlines"></div>
+        <div class="static-noise"></div>
         
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-title">SECURED GLOBAL COMMUNICATION - SYSTEM ONLINE</div>
-            <div class="terminal-date" id="terminal-date">AUG 06 2025 - 14:32:00</div>
-        </div>
-        
-        <!-- Chat messages container -->
-        <div class="chat-container" id="chat-container">
-            <!-- Boot sequence -->
-            <div class="system-msg">TERMINAL INITIALIZED...</div>
-            <div class="system-msg">CONNECTING TO COMMUNICATION SERVER...</div>
-            <div class="system-msg">LINKING VIA SATELLITE: **ORBITAL RELAY STL-42 'PANZER INDUSTRIES'**</div>
-            <div class="system-msg">ESTABLISHING PRIVATE CHANNEL TO: ROKSANA CENTRAL INTELLIGENCE AGENCY SERVER...</div>
-            <div class="system-msg">CONNECTION ESTABLISHED</div>
-            <div class="system-msg">MODE: SPECTATOR</div>
-
-            <div class="system-msg">-----------------------------------</div>
+        <div class="connection-lost-container">
+            <div class="connection-lost-message">
+                *** SATELLITE CONNECTION LOST ***
+            </div>
             
-            <!-- Chat messages -->
-            <div class="message system-msg-inline">
-                <span class="timestamp">[21:09:25]</span>
-                <span class="text">*** ROKSANA CENTRAL INTELLIGENCE AGENCY ***</span>
+            <div class="connection-details">
+                SIGNAL STRENGTH: NONE<br>
+                LAST CONTACT: 02:06:45<br>
+                ERROR CODE: SAT_LINK_TIMEOUT
             </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">Oo sis ngayon daw</span>
+            
+            <div class="signal-bars">
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
+                <div class="signal-bar"></div>
             </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Kelly></span>
-                <span class="text">May night pa pala ngayon</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">Oo tapos sabi ng spy ko wala daw si PP sa sarili tapos kasama pa yata si ate dans</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Kelly></span>
-                <span class="text">Mag sent naba ako ng spy doon?</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">Go sis monitor mo, binabantayan ng spy ko mga lakad nila para updated din us</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">On the way na daw sila sa night market sabi ng spy ko</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">Tara sis punta na tayong lahat doon</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Kelly></span>
-                <span class="text">Bhis na me</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">Ingat sis</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Kelly></span>
-                <span class="text">Magkita tayo sa ibaan building</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[00:00:00]</span>
-                <span class="username-red">Angel></span>
-                <span class="text">okicakes sis</span>
+            
+            <div class="reconnect-status">
+                ATTEMPTING TO RECONNECT...
             </div>
         </div>
     </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
