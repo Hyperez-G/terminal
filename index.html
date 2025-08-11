@@ -3,113 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Void - Terminal Chat</title>
-    <link rel="stylesheet" href="void.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>SATELLITE COURSE CHANGE DETECTED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Share Tech Mono', 'Courier New', monospace;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            background: rgba(0, 255, 0, 0.05);
+            box-shadow: 
+                0 0 20px #00ff00,
+                inset 0 0 20px rgba(0, 255, 0, 0.1);
+            animation: flicker 3s ease-in-out infinite;
+        }
+
+        .ascii-art {
+            font-size: 14px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #00dd00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .error-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4444;
+            text-shadow: 0 0 15px #ff4444;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .status-text {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 8px #00ff00;
+        }
+
+        .blinking {
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            98% { opacity: 1; }
+            99% { opacity: 0.95; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.03) 2px,
+                rgba(0, 255, 0, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="terminal-container">
-        <!-- Scanlines overlay for CRT effect -->
-        <div class="scanlines"></div>
-        
-        <!-- Terminal header -->
-        <div class="terminal-header">
-            <div class="terminal-title">FEDERAL SOVEREIGN RADIANT OF ROKSANA TORTURE CHAMBER - THE VOID</div>
-            <div class="terminal-date" id="terminal-date">AUG 08 2025 - 14:32:00</div>
+    <div class="scanlines"></div>
+    <div class="container">
+        <div class="ascii-art">
+   ██████  ▄▄▄     ▄▄▄█████▓▓█████  ██▓     ██▓     ██▓▄▄▄█████▓▓█████ 
+▒██    ▒ ▒████▄   ▓  ██▒ ▓▒▓█   ▀ ▓██▒    ▓██▒    ▓██▒▓  ██▒ ▓▒▓█   ▀ 
+░ ▓██▄   ▒██  ▀█▄ ▒ ▓██░ ▒░▒███   ▒██░    ▒██░    ▒██▒▒ ▓██░ ▒░▒███   
+  ▒   ██▒░██▄▄▄▄██░ ▓██▓ ░ ▒▓█  ▄ ▒██░    ▒██░    ░██░░ ▓██▓ ░ ▒▓█  ▄ 
+▒██████▒▒ ▓█   ▓██▒ ▒██▒ ░ ░▒████▒░██████▒░██████▒░██░  ▒██▒ ░ ░▒████▒
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░ ▒ ░░   ░░ ▒░ ░░ ▒░▓  ░░ ▒░▓  ░░▓    ▒ ░░   ░░ ▒░ ░
+░ ░▒  ░ ░  ▒   ▒▒ ░   ░     ░ ░  ░░ ░ ▒  ░░ ░ ▒  ░ ▒ ░    ░     ░ ░  ░
+░  ░  ░    ░   ▒    ░         ░     ░ ░     ░ ░    ▒ ░  ░         ░   
+      ░        ░  ░           ░  ░    ░  ░    ░  ░ ░              ░  ░
         </div>
         
-        <!-- Chat messages container -->
-        <div class="chat-container" id="chat-container">
-            <!-- Boot sequence -->
-            <div class="system-msg">TERMINAL INITIALIZED...</div>
-            <div class="system-msg">CONNECTING TO COMMUNICATION SERVER...</div>
-            <div class="system-msg">LINKING VIA SATELLITE: **ORBITAL RELAY STL-42 'PANZER INDUSTRIES'**</div>
-            <div class="system-msg">ESTABLISHING PRIVATE CHANNEL TO: TORTURE CHAMBER - THE VOID...</div>
-            <div class="system-msg">CONNECTION ESTABLISHED</div>
-            <div class="system-msg">MODE: COMMUNICATION</div>
-            <div class="system-msg">PRIVATE MESSAGE: PRISONER 012</div>
-            <div class="system-msg">-----------------------------------</div>
-            
-            <!-- Chat messages -->
-
-            <div class="message system-msg-inline">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="text">*** CONNECTION ESTABLISHED ***</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username">DANCING QUEEN></span>
-                <span class="text">Hello</span>
-            </div>
-
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">Oh my God, the Dancing Queen! Madam President Athena. Pleasure to meet you, Your Excellency.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username">DANCING QUEEN></span>
-                <span class="text">Report Oscar.</span>
-            </div>
-
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">Damn you, Nick! I thought I was speaking to the Dancing Queen!!!</span>
-            </div>
-
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">I'm somewhat okay here, but the void will consume me soon. You need to crack the code to get me unstuck from this damn void.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username">DANCING QUEEN></span>
-                <span class="text">What code?</span>
-            </div>
-
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">I don't know. I just need a code to get me unstuck here!</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username">DANCING QUEEN></span>
-                <span class="text">Give me clues.</span>
-            </div>
-            
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">FASTER I DON'T HAVE TIME. I HAVE UNTIL MIDNIGHT, THE CODE IS HIDDEN INSIDE THE ROKSANA'S VOID YOU MUST GET OUT OF THE CHAT IN ORDER TO VIEW ALL THE CODES.</span>
-            </div>
-
-            <div class="message user-msg">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username">DANCING QUEEN></span>
-                <span class="text">Understood.</span>
-            </div>
-
-            <div class="message user-msg-red">
-                <span class="timestamp">[??:??:??]</span>
-                <span class="username-red">PRISONER 012></span>
-                <span class="text">WAIT I THJINK IT'S IN OUR CONVERSATION. FIND IT!</span>
-            </div>
-        </div>
+        <div class="error-message">SATELLITE COURSE CHANGE DETECTED</div>
+        
+        <div class="status-text">STL-42 'PANZER INDUSTRIES' ORBITAL DRIFT CONFIRMED</div>
+        <div class="status-text">NEW TRAJECTORY: RASPUTIN FEDERATION AIRSPACE</div>
+        <div class="status-text">LOCATION: SOUTH-EAST ASIA FEDERATION STATE</div>
+        <div class="status-text">ATTEMPTING COURSE CORRECTION...</div>
+        
+        <div class="status-text blinking">WARNING: ENTRY VECTOR UNAUTHORIZED</div>
+        
+        <div class="status-text">ORBITAL MECHANICS: UNPLANNED TRAJECTORY</div>
+        <div class="status-text">POSSIBLE CONTROL OVERRIDE DETECTED</div>
+        
+        <div class="status-text blinking">PLEASE STAND BY</div>
     </div>
-    
-    <script src="script.js"></script>
 </body>
 </html>
-
-
-
